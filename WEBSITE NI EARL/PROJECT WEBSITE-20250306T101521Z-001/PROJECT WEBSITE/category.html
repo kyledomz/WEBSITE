@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="logo.png" type="image/png">
+    <title>Category</title>
+</head>
+<body>
+    <header>
+
+        <div class="nav-container">
+            <div class="logo">
+                <a href="project.html"><img src="logo.png"></a>
+            </div>
+
+            <div class="polo">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="project.html" class="active">Home</a></li>
+                    <li><a href="category.html" class="#category">Category</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-link" target="_blank">
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <div class="category" id="category">
+        <div class="category-title">
+            <h2>Thrift Chic' Category</h2>
+        </div>
+        <div class="category-box">
+            <div class="box woman-box">
+                <div class="box-content b2">
+                    <h3>Most Popular Styles</h3>
+                    <label>Women</label>
+                    <a href="#women">Go Here</a>
+                </div>
+                <img src="img-1.jpeg">
+            </div>
+            <div class="box man-box">
+                <div class="box-content">
+                    <h3>Last Year's Trends</h3>
+                    <label>Men</label>
+                    <a href="#men">Go Here</a>
+                </div>
+                <img src="img-2.jpeg">
+            </div>
+        </div>
+    </div>
+
+    <div class="popular-products" id="men">
+        <div class="popular-products-box">
+            <div class="popular-products-title">
+                <H2>MEN</H2>
+            </div>
+            <div class="popular-products-items">
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="popular-1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>Uniqlo DDF Sweatshirt</h4>
+                        <div class="price">
+                            <label>₱450</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('Uniqlo Disney Dearest Friends Sweatshirt', 450)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="sweater1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>CARHARTT DETROIT'S JACKET</h4>
+                        <div class="price">
+                            <label>₱650</label>
+                        </div>
+                        <button class="buy-button" id="buy" onclick="buyProduct('CARHARTT DETROITS JACKET', 650)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="white-t.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>CDG PLAY</h4>
+                        <div class="price">
+                            <label>₱450</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('CDG PLAY', 450)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="popular-4.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>Nike Cap</h4>
+                        <div class="price">
+                            <label>₱500</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('Nike Cap', 500)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="pants1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>EVISU DAICOCK 1S</h4>
+                        <div class="price">
+                            <label>₱450</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('EVISU DAICOCK 1S', 450)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="men-1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>RALPH LAUREN POLO</h4>
+                        <div class="price">
+                            <label>₱599</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('RALPH LAUREN POLO', 599)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="shorts-1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>Cartoon and Letter <br>Print Tie Dye Shorts</h4>
+                        <div class="price">
+                            <label>₱450</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('Cartoon and Letter Print Tie Dye Shorts', 450)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="hoodie1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>CARHARTT DETROIT'S GRAY</h4>
+                        <div class="price">
+                            <label>₱500</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('CARHARTT DETROITS GRAY', 500)">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popular-products" id="women">
+        <div class="popular-products-box">
+            <div class="popular-products-title">
+                <H2>WOMEN</H2>
+            </div>
+            <div class="popular-products-items">
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="popular-6.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>Blue Dress</h4>
+                        <div class="price">
+                            <label>₱500</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('Blue Dress', 500)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="popular-2.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>RIB TANK DRESS</h4>
+                        <div class="price">
+                            <label>₱350</label>
+                        </div>
+                        <button class="buy-button" id="buy" onclick="buyProduct('RIB TANK DRESS', 350)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="blouse.jpg">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>Corset Tops <br>Lace Short Sleeve</h4>
+                        <div class="price">
+                            <label>₱350</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('Corset Tops Lace Short Sleeve', 350)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="sweater2.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>CARHARTT DETROIT BLACK</h4>
+                        <div class="price">
+                            <label>₱500</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('CARHARTT DETROIT BLACK', 500)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="croptop-1.jpg">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>TOP ROUND CROPTOP</h4>
+                        <div class="price">
+                            <label>₱180</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('TOP ROUND CROPTOP', 180)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="jeans-1.jpg">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>High-Waisted Jeans Skirt</h4>
+                        <div class="price">
+                            <label>₱180</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('High-Waisted Jeans Skirt', 180)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="jeans-2.jpg">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>WIDE-LEGGED JEANS</h4>
+                        <div class="price">
+                            <label>₱200</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('WIDE-LEGGED JEANS', 200)">Buy</button>
+                    </div>
+                </div>
+
+                <div class="popular-products-item">
+                    <div class="popular-products-image">
+                        <img src="jacket1.png">
+                    </div>
+                    <div class="popular-products-body">
+                        <h4>CARHARTT DETROIT MOSS GREEN</h4>
+                        <div class="price">
+                            <label>₱500</label>
+                        </div>
+                        <button class="buy-button"  id="buy" onclick="buyProduct('CARHARTT DETROIT MOSS GREEN', 500)">Buy</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-box">
+                    <div class="footer-i f1">
+                        <h4>Contact</h4>
+                        <label>Street: Dona Rosario  </label><br>
+                        <label>Brgy: Novaliches Proper</label><br>
+                        <label>City: Quezon City</label><br>
+                        <label>Zip Code: 1123</label><br>
+                        <label>Social Media: Frip3rie</label><br>
+                    </div>
+                    <div class="footer-i f2">
+                        <h4>Visit Us</h4>
+                        <label>Getting Here</label><br>
+                        <label>Our Supporters</label><br>
+                        <label>Seating Charts</label><br>
+                        <label>Staff Director</label><br>
+                        <label>Current Season</label><br>
+                        <label>Donor Events</label><br>
+                    </div>
+                    <div class="footer-i f3">
+                        <h4>Recent Posts</h4>
+                        <label>Prison Break</label><br>
+                        <label>Take Time to Realize</label><br>
+                        <label>All is Well</label><br>
+                    </div>
+                    <div class="footer-i f4">
+                        <h4>Thrifty Chic'</h4>
+                        <label>Welcome to 'Thrifty Chic'—where affordability meets allure in our enchanting thrift store. Picture a vibrant space adorned with curated finds, each garment telling a unique story. 'Thrifty' invites the budget-conscious adventurer on a journey through pre-loved wonders, while 'Chic' adds a touch of sophistication. Here, thrifted gems become fashion statements, expressing individuality and celebrating sustainable style. Join us in this whimsical emporium, where every visit is a fashion-forward adventure, seamlessly blending past tales into a contemporary narrative.</label>
+                        <input type="text" placeholder="Email Adress">
+                        <button><i class="fa-solid fa-share"></i></button>
+                        <div class="social-media">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61551894643982" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <script src="category.js"></script>
+</body>
+</html>
