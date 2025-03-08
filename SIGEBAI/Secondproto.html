@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Block Studios</title>
+    <link href="'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,700&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@600&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --background-color: #F5F5F5;
+            --primary-color: #FFFFFF;
+            --accent-color: #A0A0A0;
+            --font-color: #ffffff;
+            --nav-bg-color: rgba(252, 251, 251, 0);
+            --highlight-color: #355D67;
+        }
+
+        .form-section {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .form-section h3 {
+            color: var(--highlight-color);
+            margin-bottom: 1rem;
+        }
+
+        .time-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .qr-section {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .studio-paragraph{  
+            color: #ffffff;
+            font-family: 'Cinzel', sans-serif;
+        }
+
+        .qr-image {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-image:hover {
+            transform: scale(1.05);
+        }
+
+        .form-section label {
+            display: block;
+            margin: 0.8rem 0 0.3rem;
+        }
+
+        .modal-content {
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-scroll-content {
+            overflow-y: auto;
+            max-height: 70vh;
+            padding: 0 1rem;
+            margin: 1rem 0;
+        }
+
+        .modal-footer {
+            margin-top: auto;
+            padding: 1rem;
+            background: var(--primary-color);
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* Scrollbar Styling */
+        .modal-scroll-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-scroll-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .modal-scroll-content::-webkit-scrollbar-thumb {
+            background: var(--highlight-color);
+            border-radius: 4px;
+        }
+
+        .modal-scroll-content::-webkit-scrollbar-thumb:hover {
+            background: #355D67;
+        }
+
+        #galleryModal .modal-content {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .calendar-header-day:nth-child(1),
+        .calendar-header-day:nth-child(7),
+        .calendar-day:nth-child(7n),
+        .calendar-day:nth-child(7n+1) {
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+        
+        .no-scroll {
+            overflow: hidden !important;
+            height: 100vh !important;
+            position: fixed !important;
+            width: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            transition: all 0.3s ease;
+        }
+
+        #socialMediaBtn {
+            position: fixed;
+            right: 40px;
+            bottom: 100px;
+            background: var(--highlight-color);
+            padding: 10px 20px;  
+            font-size: 18px;  
+            color: white; 
+            border-radius: 10px;  
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #socialMediaPopup {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .qr-modal-content {
+            background: transparent !important;
+            max-width: 90%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .enlarged-qr {
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-content.qr-modal-content {
+            position: relative;
+            margin: auto;
+        }
+
+        .service-btn {
+            display: block;
+            background: var(--highlight-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .service-btn:hover {
+            background: #224750;
+        }
+
+        header {
+            background-color: var(--nav-bg-color);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #submitBtn {
+            display: block !important;
+            margin: 1rem auto !important;
+            width: fit-content;
+            
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+    justify-content: space-between; /* Ensures logo is on the left and nav links are on the right */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Adds padding to prevent content from touching the edges */
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 1rem 0;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-day.booked {
+            background: #224750;
+            color: white;
+            position: relative;
+        }
+
+        .calendar-day.booked:hover::after {
+            content: attr(data-times);
+            position: absolute;
+            background: white;
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .month-navigation {
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            display: flex;
+    align-items: center;
+    gap: 10px;
+    /* No need for margin-right: auto; since justify-content: space-between handles it */
+        
+}
+
+        .logo-image {
+            height: 50px;
+            width: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            color: var(--font-color);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Cinzel', sans-serif;
+        }
+
+        .logo-text:hover {
+            color: var(--highlight-color);
+        }
+
+        .nav-links {
+            display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Cinzel', sans-serif;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--font-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--highlight-color);
+            color: white;
+        }
+
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('2.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            margin-top: -15px ;
+        }
+
+        .studio-title {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-family: 'Cinzel', sans-serif;
+        }
+
+        .studio-subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: #ffffff;
+            font-family: 'Cinzel', sans-serif;
+        }
+
+       
+
+        #imageModal {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.9) !important;
+        }
+
+        #modalImage {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            margin: auto;
+        }
+
+        .calendar-header-day {
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            background: var(--primary-color);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--highlight-color);
+        }
+
+        .gallery-grid {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: center;
+    flex-wrap: nowrap; 
+}
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--background-color);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .gallery-img {
+            border: 2px solid rgb(255, 255, 255);
+            padding: 2px;
+              width: 400px; 
+                height: 450px;
+                    display: flex;
+            justify-content: center;
+                align-items: center;
+             background: #ededed00;
+         flex-shrink: 0;
+                    overflow: hidden; 
+                border-radius: 25px;              
+        }
+    
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: var(--font-color);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 1rem;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .close-btn {
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #224750;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="First Block Studio Logo" class="logo-image">
+                <a href="#" class="logo-text">First Block Studio</a>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="servicesLink">Services</a>
+                <a id="ratesLink">Rates</a>
+                <a href="#" id="galleryLink">Gallery</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1 class="studio-title">FIRST BLOCK STUDIOS</h1>
+            <h2 class="studio-subtitle">DANCE STUDIO FOR RENT</h2>
+            <p class="studio-paragraph">Your first block in the world of creativity.</p>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+        <div class="modal-content">
+            <h2>Studio Gallery</h2>
+            <div class="gallery-grid">
+                <img src="2.png" class="gallery-img" onclick="openImageModal(this)">
+                <img src="4.png" class="gallery-img" onclick="openImageModal(this)">
+                <img src="fbs 1.png" class="gallery-img" onclick="openImageModal(this)">
+            </div>
+            <button class="close-btn" onclick="closeGalleryModal()">Close</button>
+        </div>
+    </div>
+
+    <section class="studio-gallery">
+        <div class="gallery-grid">
+            <img src="1.png" class="gallery-img" onclick="openImageModal(this)">
+            <img src="3.png" class="gallery-img" onclick="openImageModal(this)">
+            <img src="terms.png" class="gallery-img" onclick="openImageModal(this)">
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            2nd Floor of The Hub Mayon, 18 Mayon St, 1114 Metro Manila
+            <br>First Block Studios © 2024
+        </p>
+    </footer>
+
+    <!-- Rates Modal -->
+    <div id="ratesModal" class="modal">
+        <div class="modal-content">
+            <h2>Studio Rates</h2>
+            <p><strong>New Soft Opening Rate</strong></p>
+            <p>Regular Rate</p>
+            <p>750/hr</p>
+            <p>600/hr (min 3 hrs)</p>
+            <br><p><strong>Grand Opening Rate:</strong></p>
+            <p>Weekday/Weekend Rate</p>
+            <br><p>Early Hours (7:00 - 4:00pm)</p>
+            <p>700/hr</p>
+            <p>600/hr (min 3 hrs)</p>
+            <br><p>Regular Hours (4:00 - 9:00pm)</p>
+            <p>900/hr</p>
+            <p>800/hr (min 3 hrs)</p>
+            <p>1000/hr</p>
+            <br> <p>After Hours (9:00 - 12:00 am)</p>
+            <p>900/hr (min 3hrs)</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal" onclick="closeImageModal(event)">
+        <span class="modal-close" onclick="closeImageModal(event)">&times;</span>
+        <img id="modalImage">
+    </div>
+
+    <!-- Services Modal -->
+    <div id="servicesModal" class="modal">
+        <div class="modal-content">
+            <h2>Our Services</h2>
+            <a href="#" class="service-btn" onclick="openRentSpaceModal()">📅 Reserve your Space</a>
+            <a href="#" class="service-btn" onclick="showCalendar()">📅 View Calendar</a>
+            <div id="calendarView" style="display: none;">
+                <div class="calendar-header">
+                    <button class="month-navigation" onclick="previousMonth()">←</button>
+                    <h3 id="currentMonth"></h3>
+                    <button class="month-navigation" onclick="nextMonth()">→</button>
+                </div>
+                <div class="calendar" id="calendar"></div>
+            </div>
+            <button class="close-btn" onclick="closeServicesModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Rent Space Modal -->
+    <div id="rentSpaceModal" class="modal">
+        <div class="modal-content" style="position: relative;">
+            <h2>Rent Your Space</h2>
+            <form id="rentSpaceForm">
+                <div class="modal-scroll-content">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+
+                    <!-- Booking Details -->
+                    <div class="form-section">
+                        <h3>Booking Details</h3>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                        
+                        <div class="time-group">
+                            <div>
+                                <label for="startTime">Start Time:</label>
+                                <input type="time" id="startTime" name="startTime" required>
+                            </div>
+                            <div>
+                                <label for="endTime">End Time:</label>
+                                <input type="time" id="endTime" name="endTime" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Type Selection -->
+                    <div class="form-section">
+                        <h3>Payment Type</h3>
+                        <label for="paymentType">Select Payment Type:</label>
+                        <select id="paymentType" name="paymentType" required>
+                            <option value="full">Full Payment</option>
+                            <option value="downpayment">Downpayment</option>
+                        </select>
+                    </div>
+
+                    <!-- Payment Section -->
+                    <div class="form-section">
+                        <h3>Payment Information</h3>
+                        <div class="qr-section">
+                            <img src="qr-code.png" alt="QR Code" class="qr-image" onclick="openQrModal()">
+                            <p>Scan QR code for payment</p>
+                        </div>
+                        
+                        <label for="paymentProof">Upload Payment Proof:</label>
+                        <input type="file" id="paymentProof" accept=".png, .jpg, .jpeg" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="service-btn" id="submitBtn">Submit Booking</button>
+                    <button type="button" class="close-btn" onclick="closeRentSpaceModal()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="modal" onclick="closeQrModal(event)">
+        <span class="modal-close" onclick="closeQrModal(event)">&times;</span>
+        <div class="modal-content qr-modal-content">
+            <img src="qr-code.png" class="enlarged-qr">
+        </div>
+    </div>
+
+    <script>
+        // Global Variables
+        let currentDate = new Date();
+        let bookedSlots = [];
+
+        // Calendar Functions
+        function showCalendar() {
+            document.getElementById('calendarView').style.display = 'block';
+            generateCalendar(currentDate);
+        }
+
+        function generateCalendar(date) {
+            const calendar = document.getElementById('calendar');
+            const monthYear = document.getElementById('currentMonth');
+            
+            // Clear existing content
+            calendar.innerHTML = '';
+            
+            // Set month/year display
+            monthYear.textContent = new Intl.DateTimeFormat('en-US', { 
+                month: 'long', 
+                year: 'numeric' 
+            }).format(date);
+
+            // Get first and last day of month
+            const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+            
+            // Add weekday headers
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            weekdays.forEach(day => {
+                calendar.innerHTML += `<div class="calendar-header-day">${day}</div>`;
+            });
+
+            // Add empty cells for days from previous month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                calendar.innerHTML += '<div class="calendar-day"></div>';
+            }
+
+            // Add days of current month
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const currentDateStr = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const bookings = bookedSlots.filter(slot => slot.date === currentDateStr);
+                const isBooked = bookings.length > 0;
+                const details = bookings.map(b => 
+                    `Name: ${b.lastName}, ${b.firstName}\nTime: ${b.startTime}-${b.endTime}`
+                ).join('\n');
+
+                calendar.innerHTML += `
+                    <div class="calendar-day ${isBooked ? 'booked' : ''}" 
+                        ${isBooked ? `data-details="${details}"` : ''}
+                        onclick="${isBooked ? 'showBookingDetails(this)' : ''}">
+                        ${day}
+                    </div>
+                `;
+            }
+        }
+
+        function showBookingDetails(element) {
+            const details = element.getAttribute('data-details');
+            if (details) {
+                alert(details.replace(/\n/g, '\n'));
+            }
+        }
+
+        function previousMonth() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            generateCalendar(currentDate);
+        }
+
+        function nextMonth() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            generateCalendar(currentDate);
+        }
+
+        // Modal Functions
+        function openImageModal(element) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImage.src = element.src;
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeImageModal(event) {
+            if (event.target.classList.contains('modal') || event.target.classList.contains('modal-close')) {
+                document.getElementById('imageModal').style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }
+            event.stopPropagation();
+        }
+
+        // Booking Functions
+        document.getElementById("rentSpaceForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const booking = {
+                date: document.getElementById("date").value,
+                startTime: document.getElementById("startTime").value,
+                endTime: document.getElementById("endTime").value,
+                lastName: document.getElementById("lastName").value,
+                firstName: document.getElementById("firstName").value,
+                paymentType: document.getElementById("paymentType").value // Added payment type
+            };
+
+            if (isTimeSlotBooked(booking.date, booking.startTime, booking.endTime)) {
+                alert("This time slot is already booked!");
+                return;
+            }
+
+            bookedSlots.push(booking);
+            alert("Booking submitted!");
+            generateCalendar(currentDate);
+            closeRentSpaceModal();
+        });
+
+        function isTimeSlotBooked(date, startTime, endTime) {
+            return bookedSlots.some(slot => 
+                slot.date === date && 
+                ((startTime >= slot.startTime && startTime < slot.endTime) || 
+                (endTime > slot.startTime && endTime <= slot.endTime) || 
+                (startTime <= slot.startTime && endTime >= slot.endTime))
+            );
+        }
+
+        // Modal Controls
+        document.getElementById("servicesLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("servicesModal").style.display = "flex";
+        });
+
+        document.getElementById("galleryLink").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("galleryModal").style.display = "flex";
+        });
+
+        document.getElementById("ratesLink").addEventListener("click", function() {
+            document.getElementById("ratesModal").style.display = "flex";
+        });
+
+        function closeServicesModal() {
+            document.getElementById("servicesModal").style.display = "none";
+        }
+
+        function closeGalleryModal() {
+            document.getElementById("galleryModal").style.display = "none";
+        }
+
+        function closeModal() {
+            document.getElementById("ratesModal").style.display = "none";
+        }
+
+        function openRentSpaceModal() {
+            document.getElementById("rentSpaceModal").style.display = "flex";
+            document.getElementById("rentSpaceForm").reset();
+        }
+
+        function closeRentSpaceModal() {
+            document.getElementById("rentSpaceModal").style.display = "none";
+        }
+
+        // File Upload Validation
+        document.getElementById("paymentProof").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const validExtensions = ["image/png", "image/jpeg", "image/jpg"];
+                if (validExtensions.includes(file.type)) {
+                    document.getElementById("submitBtn").style.display = "block";
+                } else {
+                    alert("Invalid file type. Please upload a PNG or JPG file.");
+                    event.target.value = "";
+                    document.getElementById("submitBtn").style.display = "none";
+                }
+            }
+        });
+
+        // QR Code Modal Functions
+        function openQrModal() {
+            const qrModal = document.getElementById('qrModal');
+            qrModal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
+        }
+
+        function closeQrModal(event) {
+            const qrModal = document.getElementById('qrModal');
+            if (event.target === qrModal || event.target.classList.contains('modal-close')) {
+                qrModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }
+            event.stopPropagation();
+        }
+
+        // Social Media Popup
+        function openSocialMediaPopup() {
+            document.getElementById("socialMediaPopup").style.display = "flex";
+        }
+
+        function closeSocialMediaPopup() {
+            document.getElementById("socialMediaPopup").style.display = "none";
+        }
+
+        // Universal ESC key handler
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQrModal({ target: document.getElementById('qrModal') });
+                closeImageModal({ target: document.getElementById('imageModal') });
+                closeRentSpaceModal();
+                closeServicesModal();
+                closeGalleryModal();
+                closeModal();
+                closeSocialMediaPopup();
+            }
+        });
+    </script>
+</body>
+</html>
