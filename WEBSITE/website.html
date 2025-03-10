@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Block Studios</title>
-    <link href="'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,700&family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@600&family=Song+Myung&display=swap" rel="stylesheet">
     <style>
 
@@ -369,6 +369,12 @@
         
 }
 
+.address-under {
+    color: black;
+    font-family: 'Cinzen';
+    font-size: 20px;
+}
+
         .logo-image {
             height: 50px;
             width: 45px;
@@ -467,7 +473,7 @@
         }
 
         /* Close buttons styling */
-.modal-close {
+    .modal-close {
     position: absolute;
     top: 20px;
     right: 35px;
@@ -479,6 +485,15 @@
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.gallery-grid {
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Three equal columns */
+  gap: 15px;  /* Space between images */
+  justify-items: center;  /* Center the images in their grid cells */
+  padding: 10px;
+  width: 100%;
+}
+
 
         .modal-close:hover {
             color: var(--highlight-color);
@@ -486,11 +501,12 @@
 
     .gallery-grid-under {
         display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    overflow-x: auto; 
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        overflow-x: auto;
+        background: linear-gradient(to bottom, #355D67 , #FFF3D2 ); /* Gradient background */ 
 }
 /* Update the gallery-img styling */
 .gallery-img {
@@ -530,18 +546,33 @@
             width: 100%;
         }
 
+        .gallery-img-grid {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+
+        /* Hover effect for images */
+.gallery-img-grid:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+
         .gallery-img {
             border: 2px solid rgb(255, 255, 255);
             padding: 2px;
-              width: 400px; 
-                height: 450px;
-                    display: flex;
+            width: 400px; 
+            height: 450px;
+            display: flex;
             justify-content: center;
-                align-items: center;
-             background: #ededed00;
-         flex-shrink: 0;
-                    overflow: hidden; 
-                border-radius: 25px;              
+            align-items: center;
+            background: #ededed00;
+            flex-shrink: 0;
+            overflow: hidden; 
+            border-radius: 25px;              
         }
     
         footer {
@@ -564,24 +595,44 @@
 
         .close-btn {
             background: #607D8B;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin: 0.5rem;
-    min-width: 120px;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 0.5rem;
+            min-width: 120px;
         }
+
+        /* Close button styling */
+    .close-btn-grid {
+        background-color: #607D8B; /* Button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  position: fixed;  /* Position it fixed on the screen */
+  bottom: 20px;     /* 20px from the bottom of the page */
+  left: 50%;        /* Center it horizontally */
+  transform: translateX(-50%); /* Perfectly center it */
+  transition: background-color 0.3s ease;
+}
+
+.close-btn-grid:hover {
+  background-color: #224750;
+}
 
         .close-btn:hover {
             background: #224750;
         }
         /* Rates modal */
-.rates-modal {
-    background: rgba(0, 0, 0, 0.7);
-}
+        .rates-modal {
+            background: rgba(0, 0, 0, 0.7);
+        }
 
 .rates-modal .modal-content {
     border-left: 5px solid #355D67;
@@ -609,9 +660,21 @@
     margin-bottom: 20px;
 }
 
+
 /* Gallery modal */
 .gallery-modal {
-    background: rgba(0, 0, 0, 0.8);
+    display: none;  /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  padding: 20px;
 }
 
 .gallery-modal .modal-content {
@@ -621,9 +684,10 @@
 }
 
 .gallery-modal h2 {
-    color: #355D67;
+    color: #000000;
     margin-bottom: 25px;
     font-family: 'Cinzel', sans-serif;
+    font-size: 35px;
 }
 
 /* Image modal - fullscreen viewing */
@@ -646,6 +710,21 @@
 .rent-modal .modal-content {
     max-width: 550px;
     border-radius: 12px;
+}
+
+/* Content inside the modal */
+.modal-content-gallery {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .rent-modal h2 {
@@ -674,6 +753,50 @@
     border: 4px solid white;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
+/* Container for the social media icons */
+.social-icons {
+  position: fixed;
+  bottom: 20px;  /* Distance from the bottom */
+  left: 20px;    /* Distance from the left */
+  display: flex; /* Align icons horizontally */
+  gap: 15px;     /* Space between icons */
+  z-index: 1000; /* Ensure it's on top of other content */
+}
+
+/* Base styles for each social icon */
+.social-icon {
+  width: 40px;   /* Icon size */
+  height: 40px;  /* Icon size */
+  background-color: #333; /* Default background color */
+  border-radius: 50%;  /* Make it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Individual social media styles */
+.social-icon.facebook {
+  background-color: #3b5998; /* Facebook color */
+}
+
+.social-icon.tiktok {
+  background-color: #000000; /* TikTok's solid black for contrast */
+}
+
+.social-icon.instagram {
+  background-color: #E4405F; /* Instagram color */
+}
+
+/* Hover effect */
+.social-icon:hover {
+  transform: scale(1.1); /* Slightly grow the icon */
+  opacity: 0.8;
+}
+
 
     </style>
 </head>
@@ -702,14 +825,17 @@
 
     <!-- Gallery Modal -->
 <div id="galleryModal" class="modal-base gallery-modal">
-    <div class="modal-content">
+    <div class="modal-content-gallery">
         <h2>Studio Gallery</h2>
         <div class="gallery-grid">
-            <img src="2.png" class="gallery-img" onclick="openImageModal(this)">
-            <img src="4.png" class="gallery-img" onclick="openImageModal(this)">
-            <img src="fbs 1.png" class="gallery-img" onclick="openImageModal(this)">
+            <img src="2.png" class="gallery-img-grid" onclick="openImageModal(this)">
+            <img src="4.png" class="gallery-img-grid" onclick="openImageModal(this)">
+            <img src="terms.png" class="gallery-img-grid" onclick="openImageModal(this)">
+            <img src="logo.png" class="gallery-img-grid" onclick="openImageModal(this)">
+            <img src="1.png" class="gallery-img-grid" onclick="openImageModal(this)">
+            <img src="qr-code.png" class="gallery-img-grid" onclick="openImageModal(this)">
         </div>
-        <button class="close-btn" onclick="closeGalleryModal()">Close</button>
+        <button class="close-btn-grid" onclick="closeGalleryModal()">Close</button>
     </div>
 </div>
 
@@ -722,7 +848,7 @@
     </section>
 
     <footer>
-        <p>
+        <p class="address-under">
             2nd Floor of The Hub Mayon, 18 Mayon St, 1114 Metro Manila
             <br>First Block Studios © 2024
         </p>
@@ -852,6 +978,21 @@
         <img src="qr-code.png" class="enlarged-qr">
     </div>
 </div>
+
+<!-- Social Media Icon -->
+<div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=61573684049144" target="_blank" class="social-icon facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.tiktok.com/@firstblock.studios?_t=ZS-8uYvVcCwefA&_r=" target="_blank" class="social-icon tiktok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://www.instagram.com/firstblock.studios" target="_blank" class="social-icon instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+  
+  
 
     <script>
         // Global Variables
@@ -1065,6 +1206,9 @@
                 closeSocialMediaPopup();
             }
         });
+      
     </script>
+
+    
 </body>
 </html>
